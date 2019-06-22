@@ -2,10 +2,7 @@ package com.creditsuisse.orderbook.model;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 /**
  * @author Stuart Shannon
@@ -15,11 +12,16 @@ import javax.persistence.ManyToOne;
 public class Execution
 {
     @Id
-    @GeneratedValue
+    @Column(name = "EXECUTION_ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private long quantity;
+
     @ManyToOne
-    private OrderBook orderBook;
+    @JoinColumn(name = "BOOK_ID")
+    private Book book;
+
 
     public Execution() { }
 
