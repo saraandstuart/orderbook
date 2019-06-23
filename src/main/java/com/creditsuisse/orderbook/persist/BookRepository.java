@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 /**
  * @author Stuart Shannon
  */
-public interface OrderBookRepository extends JpaRepository<Book, Long>
+public interface BookRepository extends JpaRepository<Book, Long>
 {
 }

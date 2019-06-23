@@ -3,7 +3,7 @@ package com.creditsuisse.orderbook.config;
 import com.creditsuisse.orderbook.model.Book;
 import com.creditsuisse.orderbook.model.Execution;
 import com.creditsuisse.orderbook.model.Order;
-import com.creditsuisse.orderbook.persist.OrderBookRepository;
+import com.creditsuisse.orderbook.persist.BookRepository;
 import com.creditsuisse.orderbook.persist.OrderRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
@@ -19,7 +19,7 @@ public class LoadDatabase
 {
     @Bean
     CommandLineRunner initDatabase(
-            OrderBookRepository orderBookRepository,
+            BookRepository bookRepository,
             OrderRepository orderRepository)
     {
         return args -> {
@@ -34,8 +34,8 @@ public class LoadDatabase
             book.getOrders().add(order);
             book.getExecutions().add(execution);
 
-            log.info("Preloading " + orderBookRepository.save(book));
-//            log.info("Preloading " + orderBookRepository.save(new Book("finiancialInstrumentId-2")));
+            log.info("Preloading " + bookRepository.save(book));
+//            log.info("Preloading " + bookRepository.save(new Book("finiancialInstrumentId-2")));
         };
     }
 }
